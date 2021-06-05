@@ -1,8 +1,8 @@
-# Object Detection System using Detectron2 Algorithm and Audi A2D2 dataset
+# Object Detection System using Detectron2 algorithm and Audi A2D2 dataset
 Object Detection for autonomous vehicles
 
 
-![Screenshot](preview_files/example_output.jpg) TODO
+![Screenshot](preview_files/example_output.jpg)
 
 For this project, I use Detectron2 from Facebook (https://github.com/facebookresearch/detectron2) to train and test data
 from Audi (https://www.a2d2.audi/a2d2/en.html). For citations have a look on my thesis.
