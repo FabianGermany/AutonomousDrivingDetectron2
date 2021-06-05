@@ -1,5 +1,5 @@
-# Object Detection System using Detectron2 algorithm and Audi A2D2 dataset
-Object Detection for autonomous vehicles
+# Object detection system using Detectron2 algorithm and Audi A2D2 dataset
+Object detection system that can be used for autonomous vehicles
 
 
 ![Screenshot](preview_files/example_output.jpg)
