@@ -3,7 +3,7 @@
 This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
 
 
-![Screenshot](preview_files/example_output.jpg)
+![Screenshot](preview_files/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
 
 For this project, I use [Detectron2](https://github.com/facebookresearch/detectron2) from Facebook  to train and test data
 from [Audi](https://www.a2d2.audi/a2d2/en.html). Complete citatations are mentioned in my thesis.
@@ -17,3 +17,5 @@ Due to the required GPU capacities, this project is embedded into a Google-Colab
 Another reason for outsourcing the script to Colab is that Detectron2 hardly works on Windows systems, so there is the need to create a Linux virtual machine with specific package dependencies.
 
 Consequently, the heart of this project is the Google-Colab notebook file. It can be run locally, on a Google-Colab server or better on a high performance server such as Amazon AWS S3 SageMaker.
+
+When running the first steps in the Colab, you may ask to re-connect to the runtime. In case of that please follow the instructions.
