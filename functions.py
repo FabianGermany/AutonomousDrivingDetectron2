@@ -82,6 +82,21 @@ def get_points(bbox):
     return points
 
 
+def get_2D_Bounding_Box_coordinates(file_name_bboxes):
+    # open the file
+    with open (file_name_bboxes, 'r') as f:
+        bboxes = json.load(f)
+        
+    boxes = [] # a list for containing bounding boxes  
+    print(bboxes.keys())
+    
+    for bbox in bboxes.keys():
+        bbox_read = {}
+        bbox_read['2d_bbox'] =  np.array(bboxes[bbox]['center'])
+        boxes.append(bbox_read)
+    return boxes 
+
+
 # Create or update open3d wire frame geometry for the given bounding boxes
 def _get_bboxes_wire_frames(bboxes, linesets=None, color=None):
 

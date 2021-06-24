@@ -20,3 +20,5 @@ Another reason for outsourcing the script to Colab is that Detectron2 hardly wor
 Consequently, the heart of this project is the Google-Colab notebook file. It can be run locally, on a Google-Colab server or on a high performance server such as Amazon AWS S3 SageMaker. In my case, I'll use it on a Google Server because Amazon has some financial and legal issues.
 
 When running the first steps in the Colab, you may ask to re-connect to the runtime. In case of that please follow the instructions.
+
+Make sure, that your model will be stored on your Google Drive inside a folder strcuture ``Dev/ColabDetectron2Project``.
