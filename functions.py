@@ -4,7 +4,7 @@ import json
 import pprint
 import numpy as np
 import numpy.linalg as la
-import open3d as o3
+#import open3d as o3
 
 def skew_sym_matrix(u):
     return np.array([[    0, -u[2],  u[1]], 
@@ -82,7 +82,7 @@ def get_points(bbox):
     return points
 
 
-
+'''
 # Create or update open3d wire frame geometry for the given bounding boxes
 def _get_bboxes_wire_frames(bboxes, linesets=None, color=None):
 
@@ -119,3 +119,4 @@ def _get_bboxes_wire_frames(bboxes, linesets=None, color=None):
     return linesets
 
 print("Function import done.")
+'''
