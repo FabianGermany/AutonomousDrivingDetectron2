@@ -18,13 +18,13 @@ def axis_angle_to_rotation_mat(axis, angle):
         (1 - np.cos(angle)) * np.outer(axis, axis)
 
 
-def read_bounding_boxes(file_name_bboxes):
+def read_bounding_boxes(file_name_bboxes, mute = True):
     # open the file
     with open (file_name_bboxes, 'r') as f:
         bboxes = json.load(f)
         
     boxes = [] # a list for containing bounding boxes  
-    print(bboxes.keys())
+    if(not mute): print(bboxes.keys())
     
     for bbox in bboxes.keys():
         bbox_read = {} # a dictionary for a given bounding box
