@@ -1,4 +1,23 @@
-# About
+# Object Detection with Detectron2 finetuned on Audi A2D2
+
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About</a>
+      <!--<ul>
+        <li><a href="#sub-heading">Sub Heading</a></li>
+      </ul>-->
+    </li>
+    <li>
+      <a href="#how-to-run">How to run</a>
+    </li>
+  </ol>
+</details>
+
+
+
+## About
 
 This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
 
@@ -11,7 +30,7 @@ from [Audi](https://www.a2d2.audi/a2d2/en.html). Complete citatations are mentio
 
 ![Video](output_data/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
 
-# How to run
+## How to run
 Use the GitHub link to the [file of the notebook](https://colab.research.google.com/github/FabianGermany/AutonomousDrivingDetectron2/blob/main/Detectron2_Personal_Notebook_GoogleDrive_Instance.ipynb "Jupyter Notebook inside GitHub"). Once changes are made, commit and push the changes into this GitHub repo.
 
 Due to the required GPU capacities, this project is embedded into a Google-Colab notebook so that the training and testing of the model can be outsourced to a server such as Google Server or Amazon AWS Server. The notebook is based on the [example notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5) from Facebook's Detectron2. Documentation about the Audi A2D2 dataset can be found [here](https://www.a2d2.audi/a2d2/en/tutorial.html).
@@ -21,4 +40,4 @@ Consequently, the heart of this project is the Google-Colab notebook file. It ca
 
 When running the first steps in the Colab, you may ask to re-connect to the runtime. In case of that please follow the instructions.
 
-Make sure, that your model will be stored on your Google Drive inside a folder strcuture ``Dev/ColabDetectron2Project``.
+Make sure, that your dataset will be stored on your Google Drive inside a folder strcuture ``Dev/ColabDetectron2Project``.
