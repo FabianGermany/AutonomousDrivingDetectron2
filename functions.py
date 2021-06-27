@@ -1,17 +1,22 @@
 #Functions needed to handle the Audi A2D2 dataset, according to https://www.a2d2.audi/a2d2/en/tutorial.html
+#There are more functions, but I don't need all of them since some of them focus on 3D bounding boxes
+#--------------------------------------------------------
 
-import json
-import pprint
+#the imports are not needed here because they are already mentioned in the Colab file
+import json, pprint
 import numpy as np
 import numpy.linalg as la
+import cv2
 #import open3d as o3
 
+#this is used for the function axis_angle_to_rotation_mat
 def skew_sym_matrix(u):
     return np.array([[    0, -u[2],  u[1]], 
                      [ u[2],     0, -u[0]], 
                      [-u[1],  u[0],    0]])
 
 
+#this is used for the function read_bounding_boxes
 def axis_angle_to_rotation_mat(axis, angle):
     return np.cos(angle) * np.eye(3) + \
         np.sin(angle) * skew_sym_matrix(axis) + \
@@ -45,7 +50,7 @@ def read_bounding_boxes(file_name_bboxes, mute = True):
 
     return boxes 
 
-
+#extract file name from image file name (I don't use this cause I defined my own procedure for that)
 def extract_bboxes_file_name_from_image_file_name(file_name_image):
     file_name_bboxes = file_name_image.split('/')
     file_name_bboxes = file_name_bboxes[-1].split('.')[0]
@@ -58,65 +63,14 @@ def extract_bboxes_file_name_from_image_file_name(file_name_image):
     return file_name_bboxes
 
 
-def get_points(bbox):
-    half_size = bbox['size'] / 2.
-    
-    if half_size[0] > 0:
-        # calculate unrotated corner point offsets relative to center
-        brl = np.asarray([-half_size[0], +half_size[1], -half_size[2]])
-        bfl = np.asarray([+half_size[0], +half_size[1], -half_size[2]])
-        bfr = np.asarray([+half_size[0], -half_size[1], -half_size[2]])
-        brr = np.asarray([-half_size[0], -half_size[1], -half_size[2]])
-        trl = np.asarray([-half_size[0], +half_size[1], +half_size[2]])
-        tfl = np.asarray([+half_size[0], +half_size[1], +half_size[2]])
-        tfr = np.asarray([+half_size[0], -half_size[1], +half_size[2]])
-        trr = np.asarray([-half_size[0], -half_size[1], +half_size[2]])
-     
-        # rotate points
-        points = np.asarray([brl, bfl, bfr, brr, trl, tfl, tfr, trr])
-        points = np.dot(points, bbox['rotation'].T)
-        
-        # add center position
-        points = points + bbox['center']
-  
-    return points
 
+#functions for frequent usage
+#--------------------------------------------------------
 
-'''
-# Create or update open3d wire frame geometry for the given bounding boxes
-def _get_bboxes_wire_frames(bboxes, linesets=None, color=None):
-
-    num_boxes = len(bboxes)
-        
-    # initialize linesets, if not given
-    if linesets is None:
-        linesets = [o3.geometry.LineSet() for _ in range(num_boxes)]
-
-    # set default color
-    if color is None:
-        #color = [1, 0, 0]
-        color = [0, 0, 1]
-
-    assert len(linesets) == num_boxes, "Number of linesets must equal number of bounding boxes"
-
-    # point indices defining bounding box edges
-    lines = [[0, 1], [1, 2], [2, 3], [3, 0],
-             [0, 4], [1, 5], [2, 6], [3, 7],
-             [4, 5], [5, 6], [6, 7], [7, 4], 
-             [5, 2], [1, 6]]
-
-    # loop over all bounding boxes
-    for i in range(num_boxes):
-        # get bounding box corner points
-        points = get_points(bboxes[i])
-        # update corresponding Open3d line set
-        colors = [color for _ in range(len(lines))]
-        line_set = linesets[i]
-        line_set.points = o3.utility.Vector3dVector(points)
-        line_set.lines = o3.utility.Vector2iVector(lines)
-        line_set.colors = o3.utility.Vector3dVector(colors)
-
-    return linesets
-
-print("Function import done.")
-'''
+#resize image for display into notebook
+def resize_img (scale_percent, image):
+  width = int(image.shape[1] * scale_percent / 100)
+  height = int(image.shape[0] * scale_percent / 100)
+  dim = (width, height)
+  image_resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+  return image_resized
