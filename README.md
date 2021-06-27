@@ -1,24 +1,17 @@
 # Object Detection with Detectron2 finetuned on Audi A2D2
 
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about">About</a>
-      <ul>
-        <li><a href="#set-up-the-jupyter-notebook">Set up the Jupyter notebook</a></li>
-        <li><a href="#prepare-the-dataset">Prepare dataset</a></li>
-        <li><a href="#run">Run</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#how-to-run">How to run</a>
-    </li>
-  </ol>
-</details>
+## Table of Contents
+
+
+1. [About](#about)
+2. [How to run](#how-to-run)
+    1. [Set up the Jupyter notebook](#set-up-the-jupyter-notebook)
+    2. [Prepare dataset](#prepare-the-dataset)
+    3. [Run](#run)
 
 
 
+ <a name="about"></a>
 ## About
 
 This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
@@ -33,7 +26,8 @@ Complete citatations are mentioned in my thesis that is not published here.
 
 ![Video](output_data/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
 
-## How to run
+<a name="how-to-run"></a>
+## How to run 
 
 This is about how to run this software.
 
@@ -41,13 +35,14 @@ This is about how to run this software.
 Due to the required GPU capacities, this project is embedded into a Google-Colab notebook so that the training and testing of the model can be outsourced to the Google Server. The notebook is based on the [example notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5) from Facebook's Detectron2. Documentation about the Audi A2D2 dataset can be found [here](https://www.a2d2.audi/a2d2/en/tutorial.html).
 Another reason for outsourcing the script to Google Colab is that Detectron2 hardly works on Windows systems, so otherwise is the need for Windows users to create a Linux virtual machine with specific package dependencies.
 
+<a name="set-up-the-jupyter-notebook"></a>
 ### Set up the Jupyter notebook
 
 Please us the [GitHub link](https://colab.research.google.com/github/FabianGermany/AutonomousDrivingDetectron2/blob/main/Detectron2_Personal_Notebook_GoogleDrive_Instance.ipynb) to the file of the notebook inside GitHub. Then save this notebook to your Google Drive and keep the original name of this file. Once changes are made to this notebook, commit and push the changes into the GitHub repo using Colab's function "File --> Save a copy into your GitHub".
 
 Consequently, the heart of this project is the Google-Colab notebook file. It can be run locally, on a Google-Colab server or after some preparations on a high performance server such as Amazon AWS S3 SageMaker. In my case, I'll use it on a Google Server because Google Colab is for free to some extent.
 
-
+<a name="prepare-the-dataset"></a>
 ### Prepare the dataset
 
 You can download the 3D Bounding Boxes dataset from [Audi A2D2 website](https://www.a2d2.audi/a2d2/en/download.html).
@@ -57,6 +52,7 @@ There you have two zip-files called `dataset_1_train.zip` and `dataset_2_train.z
 
 The software will take care of converting the dataset to Detectron2 format by itself, so dont't worry about that.
 
+<a name="run"></a>
 ### Run
 
 Starting from the top of the notebook, just click on the desired scrips. When running the steps for installating some dependencies, you may ask to re-connect to the runtime. In case of that please follow the instructions.
