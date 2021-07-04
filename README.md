@@ -16,7 +16,7 @@
 
 This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
 
-![Screenshot](output_data/example_output_object_detection_pretrained.jpg)
+![Screenshot](output_data/exemplary_images/example_output_object_detection_pretrained.jpg)
 
 
 For this project, I use [Detectron2](https://github.com/facebookresearch/detectron2) from Facebook  to train and test data
@@ -24,7 +24,7 @@ from [Audi](https://www.a2d2.audi/a2d2/en.html).
 Complete citatations are mentioned in my thesis that is not published here.
 
 
-![Video](output_data/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
+![Video](output_data/scene_1/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
 
 <a name="how-to-run"></a>
 ## How to run 
@@ -38,7 +38,7 @@ Another reason for outsourcing the script to Google Colab is that Detectron2 har
 <a name="set-up-the-jupyter-notebook"></a>
 ### Set up the Jupyter notebook
 
-Please us the [GitHub link](https://colab.research.google.com/github/FabianGermany/AutonomousDrivingDetectron2/blob/main/Detectron2_Personal_Notebook_GoogleDrive_Instance.ipynb) to the file of the notebook inside GitHub. Then save this notebook to your Google Drive and keep the original name of this file. Once changes are made to this notebook, commit and push the changes into the GitHub repo using Colab's function "File --> Save a copy into your GitHub".
+Please use the [GitHub link](https://colab.research.google.com/github/FabianGermany/AutonomousDrivingDetectron2/blob/main/Detectron2_Personal_Notebook_GoogleDrive_Instance.ipynb) to the file of the notebook inside GitHub. Then save this notebook to your Google Drive and keep the original name of this file. Then please make changes on the file inside your Google Drive. Once changes are made to this notebook, commit and push the changes into the GitHub repo using Colab's function "File --> Save a copy into your GitHub". This way worked better for me than the other way (every time importing the current notebook from GitHub to Google Drive) because of several reasons. With the way I proposed, you can also make sure that you can use files stored in your Google Drive for your notebook.
 
 Consequently, the heart of this project is the Google-Colab notebook file. It can be run locally, on a Google-Colab server or after some preparations on a high performance server such as Amazon AWS S3 SageMaker. In my case, I'll use it on a Google Server because Google Colab is for free to some extent.
 
@@ -58,3 +58,5 @@ The software will take care of converting the dataset to Detectron2 format by it
 Before running, make sure to choose the desired parameters. This includes the sub-datasets paths as mentioned above, but also the choice whether you want to install Detectron2 permanently on your Google Drive or not using `local_install` variable.  Also we have `dataset_json_available` . Once the script has run at least once, we can set it to `True` in order to load the stored .json file so we don't need to re-parse every time. Furthermore we have `load_existing_trained_model`. We can set this to `True` so that we can load our trained model. This is useful if we only want to evaluate something and we already ran this script before, but we don't want to re-train our pre-trained model everytime we launch Colab to save time and ressources. 
 
 Starting from the top of the notebook, just click on the desired scrips. When running the steps for installating some dependencies, you may ask to re-connect to the runtime. In case of that please follow the instructions.
+
+If you have some problems executing some commands, it sometimes helps if you delete the output folder and re-run. This includes both video output files for running the `demo.py`, but also the files for the final trained model etc.
