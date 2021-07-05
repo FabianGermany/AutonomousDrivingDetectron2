@@ -8,7 +8,7 @@
     1. [Set up the Jupyter notebook](#set-up-the-jupyter-notebook)
     2. [Prepare dataset](#prepare-the-dataset)
     3. [Run](#run)
-
+    4. [FAQ](#problems)
 
 
  <a name="about"></a>
@@ -16,7 +16,7 @@
 
 This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
 
-![Screenshot](output_data/exemplary_images/example_output_object_detection_pretrained.jpg)
+![Screenshot](output_data/exemplary_images/example_output_object_detection_Faster_R_CNN_trained.jpg)
 
 
 For this project, I use [Detectron2](https://github.com/facebookresearch/detectron2) from Facebook  to train and test data
@@ -24,7 +24,7 @@ from [Audi](https://www.a2d2.audi/a2d2/en.html).
 Complete citatations are mentioned in my thesis that is not published here.
 
 
-![Video](output_data/scene_1/exemplary_scene_rural_1_muted_output_panoptic_segmentation_pretrained.gif)
+![Video](output_data/scene_1/exemplary_scene_rural_1_muted_output_panoptic_segmentation_Panoptic_FPN_pretrained.gif)
 
 <a name="how-to-run"></a>
 ## How to run 
@@ -57,6 +57,18 @@ The software will take care of converting the dataset to Detectron2 format by it
 
 Before running, make sure to choose the desired parameters. This includes the sub-datasets paths as mentioned above, but also the choice whether you want to install Detectron2 permanently on your Google Drive or not using `local_install` variable.  Also we have `dataset_json_available` . Once the script has run at least once, we can set it to `True` in order to load the stored .json file so we don't need to re-parse every time. Furthermore we have `load_existing_trained_model`. We can set this to `True` so that we can load our trained model. This is useful if we only want to evaluate something and we already ran this script before, but we don't want to re-train our pre-trained model everytime we launch Colab to save time and ressources. 
 
+Also make sure to choose the desired model in section2. There you can pick `model_path = "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"` for using a Faster R-CNN object detection model, for example.
+
 Starting from the top of the notebook, just click on the desired scrips. When running the steps for installating some dependencies, you may ask to re-connect to the runtime. In case of that please follow the instructions.
 
-If you have some problems executing some commands, it sometimes helps if you delete the output folder and re-run. This includes both video output files for running the `demo.py`, but also the files for the final trained model etc.
+
+<a name="problems"></a>
+### FAQ
+
+If you have some problems executing some commands, it sometimes helps if you delete the output folder and re-run the script:
+
+* If you get an error such as `AssertionError: exemplary_scene_rural_2_muted_output_default_local.mkv video` when running the `demo.py` , try to delete the previous output video file first so that the new can get generated.
+
+* Another one is something like `assertionerror: dataset 'custom_audi_a2d2_dataset_training' is already registered`. If this is happening, don't worry and just skip this step. The dataset has already been registered.
+
+* If you receive `AssertionError: Results do not correspond to current coco set` at `print(inference_on_dataset(trainer.model, val_loader, evaluator))` then it's actually a bit tricky. According to [this GitHub issue](https://github.com/facebookresearch/detectron2/issues/1631) a way to fix this is to delete all the files in the output folder (the model, the data in .json format etc.). Then you need to reset the Colab runtime so that everything including the installation of Detectron2, the Connection to Google Drive etc. will start from the beginning again. After this simply re-run the whole notebook. Maybe it's sufficient to delete on single file, but I couldn't find out yet.
