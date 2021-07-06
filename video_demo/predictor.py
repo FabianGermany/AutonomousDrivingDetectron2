@@ -21,9 +21,7 @@ class VisualizationDemo(object):
             parallel (bool): whether to run the model in different processes from visualization.
                 Useful since the visualization logic can be slow.
         """
-        self.metadata = MetadataCatalog.get(
-            arg_metadata
-        )
+        self.metadata = arg_metadata
             #cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
