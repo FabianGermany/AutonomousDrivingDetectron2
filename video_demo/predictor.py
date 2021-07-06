@@ -28,6 +28,7 @@ class VisualizationDemo(object):
         
         print(cfg.DATASETS.TRAIN)
         print(self.metadata)
+        print(cfg.DATASETS.TEST[0])
 
 
         self.cpu_device = torch.device("cpu")
