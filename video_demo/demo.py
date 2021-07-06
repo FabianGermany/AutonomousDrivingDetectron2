@@ -1,20 +1,20 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
-import argparse
-import glob
-import multiprocessing as mp
-import numpy as np
-import os
-import tempfile
-import time
-import warnings
-import cv2
-import tqdm
+# import argparse
+# import glob
+# import multiprocessing as mp
+# import numpy as np
+# import os
+# import tempfile
+# import time
+# import warnings
+# import cv2
+# import tqdm
 
-from detectron2.config import get_cfg
-from detectron2.data.detection_utils import read_image
-from detectron2.utils.logger import setup_logger
+# from detectron2.config import get_cfg
+# from detectron2.data.detection_utils import read_image
+# from detectron2.utils.logger import setup_logger
 
-from predictor import VisualizationDemo
+# from predictor import VisualizationDemo
 
 # constants
 WINDOW_NAME = "COCO detections"
@@ -34,6 +34,10 @@ def setup_cfg(args):
     cfg.MODEL.PANOPTIC_FPN.COMBINE.INSTANCES_CONFIDENCE_THRESH = args.confidence_threshold
     cfg.freeze()
     return cfg
+
+def calc_metadata(args):
+    metadata = args.meta_data
+    return metadata
 
 
 def get_parser():
@@ -64,6 +68,12 @@ def get_parser():
         default=0.5,
         help="Minimum score for instance predictions to be shown",
     )
+
+    parser.add_argument(
+        "--meta-data",
+        help="Metadata",
+    )
+    
     parser.add_argument(
         "--opts",
         help="Modify config options using the command-line 'KEY VALUE' pairs",
@@ -98,8 +108,9 @@ if __name__ == "__main__":
     logger.info("Arguments: " + str(args))
 
     cfg = setup_cfg(args)
+    meta_data = calc_metadata(args)
 
-    demo = VisualizationDemo(cfg)
+    demo = VisualizationDemo(cfg, meta_data)
 
     if args.input:
         if len(args.input) == 1:
