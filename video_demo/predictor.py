@@ -13,7 +13,7 @@ from detectron2.utils.visualizer import ColorMode, Visualizer
 
 
 class VisualizationDemo(object):
-    def __init__(self, cfg, arg_metadata, instance_mode=ColorMode.IMAGE, parallel=False):
+    def __init__(self, cfg, arg_metadata=None, instance_mode=ColorMode.IMAGE, parallel=False):
         """
         Args:
             cfg (CfgNode):
@@ -21,8 +21,14 @@ class VisualizationDemo(object):
             parallel (bool): whether to run the model in different processes from visualization.
                 Useful since the visualization logic can be slow.
         """
-        self.metadata = arg_metadata
-            #cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
+        if (arg_metadata is None): 
+            self.metadata = MetadataCatalog.get(
+            cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
+        )
+        else: 
+            self.metadata = MetadataCatalog.get(
+                arg_metadata
+            )
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
         

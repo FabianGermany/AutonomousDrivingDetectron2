@@ -36,7 +36,10 @@ def setup_cfg(args):
     return cfg
 
 def calc_metadata(args):
-    metadata = args.meta_data
+    if (args.meta_data is None):
+        metadata=None
+    else:
+        metadata = args.meta_data #todo else 
     return metadata
 
 
