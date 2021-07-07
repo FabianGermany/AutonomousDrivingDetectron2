@@ -43,10 +43,6 @@ class VisualizationDemo(object):
             print(arg_metadata)
             print(self.metadata)
         
-        print(cfg.DATASETS.TRAIN)
-        print(cfg.DATASETS.TEST[0])
-        print(MetadataCatalog.get(cfg.DATASETS.TEST[0]))
-        print(self.metadata)
 
 
         self.cpu_device = torch.device("cpu")
