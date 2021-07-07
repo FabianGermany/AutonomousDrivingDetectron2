@@ -24,7 +24,11 @@ class VisualizationDemo(object):
         if (arg_metadata is None): 
             self.metadata = MetadataCatalog.get(
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
-        )
+            )
+            print("I use the the default metadata which is:")
+            print(cfg.DATASETS.TRAIN)
+            print(cfg.DATASETS.TEST[0])
+            print(MetadataCatalog.get(cfg.DATASETS.TEST[0]))
         else: 
             # self.metadata = MetadataCatalog.get(
             #     arg_metadata.set(thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 
@@ -35,10 +39,14 @@ class VisualizationDemo(object):
             self.metadata = MetadataCatalog.get(arg_metadata)
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
+            print("I use the given metadata which is:")
+            print(arg_metadata)
+            print(self.metadata)
         
         print(cfg.DATASETS.TRAIN)
-        print(self.metadata)
         print(cfg.DATASETS.TEST[0])
+        print(MetadataCatalog.get(cfg.DATASETS.TEST[0]))
+        print(self.metadata)
 
 
         self.cpu_device = torch.device("cpu")
