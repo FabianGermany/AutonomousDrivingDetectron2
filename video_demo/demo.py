@@ -35,7 +35,7 @@ def setup_cfg(args):
     cfg.freeze()
     return cfg
 
-def calc_metadata(args):
+def calc_metadata(args): #i need this function cause the metadata is NOT stored inside cfg
     if (args.meta_data is None):
         metadata=None
     else:

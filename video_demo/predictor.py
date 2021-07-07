@@ -21,6 +21,7 @@ class VisualizationDemo(object):
             parallel (bool): whether to run the model in different processes from visualization.
                 Useful since the visualization logic can be slow.
         """
+        #i need to add this metadata stuff according to https://github.com/facebookresearch/detectron2/issues/326 and https://github.com/facebookresearch/detectron2/issues/101
         if (arg_metadata is None): 
             self.metadata = MetadataCatalog.get(
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
@@ -37,7 +38,7 @@ class VisualizationDemo(object):
             #   'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
             # )
             MetadataCatalog.get(arg_metadata).thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc']
-            MetadataCatalog.get(arg_metadata).thing_dataset_id_to_contiguous_id = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10, 12: 11, 13: 12, 14: 13}
+            MetadataCatalog.get(arg_metadata).thing_dataset_id_to_contiguous_id = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10, 12: 11, 13: 12, 14: 13, 15: 14}
             self.metadata = MetadataCatalog.get(arg_metadata)
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
