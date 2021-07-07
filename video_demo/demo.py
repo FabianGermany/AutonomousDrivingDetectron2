@@ -39,7 +39,7 @@ def calc_metadata(args):
     if (args.meta_data is None):
         metadata=None
     else:
-        metadata = args.meta_data #todo else 
+        metadata = args.meta_data
     return metadata
 
 
@@ -74,6 +74,7 @@ def get_parser():
 
     parser.add_argument(
         "--meta-data",
+        default=None,
         help="Metadata",
     )
     

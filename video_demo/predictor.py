@@ -15,7 +15,7 @@ from detectron2.utils.visualizer import ColorMode, Visualizer
 class VisualizationDemo(object):
     def __init__(self, cfg, arg_metadata=None, instance_mode=ColorMode.IMAGE, parallel=False):
         """
-        Args:
+        Args: #todo add
             cfg (CfgNode):
             instance_mode (ColorMode):
             parallel (bool): whether to run the model in different processes from visualization.
@@ -27,7 +27,9 @@ class VisualizationDemo(object):
         )
         else: 
             self.metadata = MetadataCatalog.get(
-                arg_metadata
+                arg_metadata.set(thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 
+              'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 
+              'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
             )
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
