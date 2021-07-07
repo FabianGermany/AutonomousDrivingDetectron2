@@ -26,11 +26,13 @@ class VisualizationDemo(object):
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
         )
         else: 
-            self.metadata = MetadataCatalog.get(
-                arg_metadata.set(thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 
-              'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 
-              'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
-            )
+            # self.metadata = MetadataCatalog.get(
+            #     arg_metadata.set(thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 
+            #   'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 
+            #   'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
+            # )
+            MetadataCatalog.get(arg_metadata).thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc']
+            self.metadata = MetadataCatalog.get(arg_metadata)
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
         
