@@ -37,15 +37,17 @@ def setup_cfg(args):
     return cfg
 
 def calc_metadata(args): #i need this function cause the metadata is NOT stored inside cfg
-    print(args.meta_data)
     if (args.meta_data is None):
         metadata=None
     else: #convert json to Metadata() format
-        imported_Metadata_as_JSON = args.meta_data
+        #imported_Metadata_as_JSON = args.meta_data
+        imported_Metadata_as_JSON = json.load(open(args.meta_data))
+        print(imported_Metadata_as_JSON)
         #imported_Metadata_as_JSON = json.load(open("Audi_Metadata_JSON.json"))
         imported_Metadata_as_Metadata = Metadata(name=imported_Metadata_as_JSON["name"])
         imported_Metadata_as_Metadata.set(thing_classes = imported_Metadata_as_JSON["thing_classes"])
-        metadata = args.meta_data
+        metadata = imported_Metadata_as_Metadata
+        print()
     return metadata
 
 
