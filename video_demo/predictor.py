@@ -39,9 +39,11 @@ class VisualizationDemo(object):
             #   'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 
             #   'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
             # )
-            MetadataCatalog.get(arg_metadata).thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc']
+            self.metadata = arg_metadata #this is a dict that already includes name, thing_classes etc.
+
+            #MetadataCatalog.get(arg_metadata).thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc']
             #MetadataCatalog.get(arg_metadata).thing_dataset_id_to_contiguous_id = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10, 12: 11, 13: 12, 14: 13} #seems like I don't need this
-            self.metadata = MetadataCatalog.get(arg_metadata)
+            #self.metadata = MetadataCatalog.get(arg_metadata)
             #cfg.DATASETS.TRAIN #this is my adaption so we can use our own classes for trained model on demo.py
             #"Custom_Audi_A2D2_Dataset_Training"
             print("I use the given metadata which is:")
