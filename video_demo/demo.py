@@ -9,11 +9,12 @@ import time
 import warnings
 import cv2
 import tqdm
+import json
 
 from detectron2.config import get_cfg
 from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
-
+from detectron2.data.catalog import Metadata
 from predictor import VisualizationDemo
 
 # constants
@@ -36,9 +37,14 @@ def setup_cfg(args):
     return cfg
 
 def calc_metadata(args): #i need this function cause the metadata is NOT stored inside cfg
+    print(args.meta_data)
     if (args.meta_data is None):
         metadata=None
-    else:
+    else: #convert json to Metadata() format
+        imported_Metadata_as_JSON = args.meta_data
+        #imported_Metadata_as_JSON = json.load(open("Audi_Metadata_JSON.json"))
+        imported_Metadata_as_Metadata = Metadata(name=imported_Metadata_as_JSON["name"])
+        imported_Metadata_as_Metadata.set(thing_classes = imported_Metadata_as_JSON["thing_classes"])
         metadata = args.meta_data
     return metadata
 

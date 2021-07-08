@@ -5,8 +5,10 @@ import multiprocessing as mp
 from collections import deque
 import cv2
 import torch
+import json
 
 from detectron2.data import MetadataCatalog
+from detectron2.data.catalog import Metadata
 from detectron2.engine.defaults import DefaultPredictor
 from detectron2.utils.video_visualizer import VideoVisualizer
 from detectron2.utils.visualizer import ColorMode, Visualizer
@@ -39,6 +41,11 @@ class VisualizationDemo(object):
             #   'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 
             #   'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc'])
             # )
+            #arg_metadata is the metadata in dict format; we need to re-convert to the original format:
+            print(arg_metadata)
+
+            
+
             self.metadata = arg_metadata #this is a dict that already includes name, thing_classes etc.
 
             #MetadataCatalog.get(arg_metadata).thing_classes = ['Animal', 'Bicycle', 'Bus', 'Car', 'Cyclist', 'EmergencyVehicle', 'MotorBiker', 'Motorcycle', 'Pedestrian', 'Truck', 'UtilityVehicle', 'VanSUV', 'Misc']
