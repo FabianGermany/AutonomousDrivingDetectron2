@@ -67,8 +67,6 @@ Starting from the top of the notebook, just click on the desired scrips. When ru
 
 If you have some problems executing some commands, it sometimes helps if you delete the output folder and re-run the script:
 
-* If you get an error such as `AssertionError: exemplary_scene_rural_2_muted_output_default_local.mkv video` when running the `demo.py` , try to delete the previous output video file first so that the new can get generated.
-
 * Another one is something like `assertionerror: dataset 'custom_audi_a2d2_dataset_training' is already registered`. If this is happening, don't worry and just skip this step. The dataset has already been registered.
 
 * If you receive `AssertionError: Results do not correspond to current coco set` at `print(inference_on_dataset(trainer.model, val_loader, evaluator))` then it's actually a bit tricky. According to [this GitHub issue](https://github.com/facebookresearch/detectron2/issues/1631) a way to fix this is to delete all the files in the output folder (the model, the data in .json format etc.). Then you need to reset the Colab runtime so that everything including the installation of Detectron2, the connection to Google Drive etc. will start from the beginning again. After this simply re-run the whole notebook. Maybe it's sufficient to delete one single file or do less steps, but I couldn't find out yet.
