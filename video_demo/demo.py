@@ -36,20 +36,16 @@ def setup_cfg(args):
     cfg.freeze()
     return cfg
 
+#function to parse metadata from json to metadata type
 def calc_metadata(args): #i need this function cause the metadata is NOT stored inside cfg
     if (args.meta_data is None):
         metadata=None
     else: #convert json to Metadata() format
-        #imported_Metadata_as_JSON = args.meta_data
-        imported_Metadata_as_JSON = json.load(open(args.meta_data))
-        print(imported_Metadata_as_JSON)
-        #imported_Metadata_as_JSON = json.load(open("Audi_Metadata_JSON.json"))
-        imported_Metadata_as_Metadata = Metadata(name=imported_Metadata_as_JSON["name"])
-        imported_Metadata_as_Metadata.set(thing_classes = imported_Metadata_as_JSON["thing_classes"])
+        imported_Metadata_as_JSON = json.load(open(args.meta_data)) #parses argument as json
+        imported_Metadata_as_Metadata = Metadata(name=imported_Metadata_as_JSON["name"]) #create Metadata type and init it with "name" attribute
+        imported_Metadata_as_Metadata.set(thing_classes = imported_Metadata_as_JSON["thing_classes"]) #put classes information into Metadata
         metadata = imported_Metadata_as_Metadata
-        print()
     return metadata
-
 
 def get_parser():
     parser = argparse.ArgumentParser(description="Detectron2 demo for builtin configs")
