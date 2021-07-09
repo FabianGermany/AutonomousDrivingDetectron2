@@ -82,4 +82,8 @@ If you have some problems executing some commands, it sometimes helps if you del
 * If Detectron2 doesn't work, please check whether the right CUDA and torch versions are installed. Detectron2 currently only works for Torch 1.8.0. The problem is that both the libraries versions that are installed on default on Colab and the required packages versions for Detectron2 may change in the course of the time. To make sure please have a look on the [GitHub of Detectron2](https://github.com/facebookresearch/detectron2) and it's [tutorial notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5)  to check whether there were changes.
 
 
-<!-- reduce size of gif with tools like https://www.ps2pdf.com/compress-gif -->
+<!-- 
+Procedure for creating the gif files:
+1. Convert .mkv files to .gif files with Shotcut Software
+2. Reduce size of gif below 100 MB due to GitHub restrictions with tools like https://www.ps2pdf.com/compress-gif 
+-->
