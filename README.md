@@ -14,17 +14,19 @@
  <a name="about"></a>
 ## About
 
-This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset and can be used for autonomous vehicles.
+This repository is about an object detection system using Detectron2 algorithm and Audi A2D2 dataset for autonomous vehicles.
 
 ![Screenshot](output_data/exemplary_images/example_output_object_detection_Faster_R_CNN_trained.jpg)
+
+<!---![Video](output_data/scene_1/exemplary_scene_rural_2_muted_output_bounding_boxes_Panoptic_FPN_trained.gif)-->
 
 
 For this project, I use [Detectron2](https://github.com/facebookresearch/detectron2) from Facebook  to train and test data
 from [Audi](https://www.a2d2.audi/a2d2/en.html). 
-Complete citatations are mentioned in my thesis that is not published here.
-
-
+Complete citatations are mentioned in my thesis that is not published here in GitHub. Summing up, with this software we will train a Detectron2 model that you can choose by yourself (e.g. Faster R-CNN) on the 2D-Bounding-Box information from Audi A2D2. This software could also be extended by further features since Audi A2D2 also features 3D bounding boxes, semantic segmentation etc. In the video below, we can see that with Detectron2 we're also able to handle semantic segmentation, panoptic segmentation etc. But let's first start with 2D bounding boxes as shown in the picture above
 ![Video](output_data/scene_1/exemplary_scene_rural_1_muted_output_panoptic_segmentation_Panoptic_FPN_pretrained.gif)
+
+
 
 <a name="how-to-run"></a>
 ## How to run 
@@ -48,7 +50,7 @@ Consequently, the heart of this project is the Google-Colab notebook file. It ca
 You can download the 3D Bounding Boxes dataset from [Audi A2D2 website](https://www.a2d2.audi/a2d2/en/download.html).
 Make sure, that your dataset will be stored on your Google Drive inside the folder structure `content/gdrive/My Drive/Dev/ColabDetectron2Project`.
 There you have two zip-files called `dataset_1_train.zip` and `dataset_2_train.zip` that include the desired sub-datasets in the format given by Audi. After unzipping, an exemplary .json file with the bounding box information has the path
-`content/gdrive/My Drive/Dev/ColabDetectron2Project\dataset_1_train\20181107_132730\label3D\cam_front_center\20181107132730_label3D_frontcenter_000000135.json`. If you use different sub-datasets than me, make sure to replace the path components like '20181107_132730' by your own paths.
+`content/gdrive/My Drive/Dev/ColabDetectron2Project\dataset_1_train\20181107_132730\label3D\cam_front_center\20181107132730_label3D_frontcenter_000000135.json`. If you use different sub-datasets than me, make sure to replace the path components like '20181107_132730' by your own paths. In my case I only use three folders of the dataset because my Google Drive storage is not enough to handle to whole dataset. For better results and for avoiding overfitting it's highly recommended to use more data.
 
 The software will take care of converting the dataset to Detectron2 format by itself, so dont't worry about that.
 
@@ -70,3 +72,5 @@ If you have some problems executing some commands, it sometimes helps if you del
 * If you receive `AssertionError: Results do not correspond to current coco set` at `print(inference_on_dataset(trainer.model, val_loader, evaluator))` then it's actually a bit tricky. According to [this GitHub issue](https://github.com/facebookresearch/detectron2/issues/1631) a way to fix this is to delete all the files in the output folder (the model, the data in .json format etc.). Then you need to reset the Colab runtime so that everything including the installation of Detectron2, the connection to Google Drive etc. will start from the beginning again. After this simply re-run the whole notebook. Maybe it's sufficient to delete one single file or do less steps, but I couldn't find out yet.
 
 * If the GPU is not available or the storage is not sufficient, you may change to another environment such as Amazon AWS or use your own GPU provided you have one. Another solution is to pay for Google Colab Pro what I did.
+
+* If Detectron2 doesn't work, please check whether the right CUDA and torch versions are installed. Detectron2 currently only works for Torch 1.8.0. The problem is that both the libraries versions that are installed on default on Colab and the required packages versions for Detectron2 may change in the course of the time. To make sure please have a look on the [GitHub of Detectron2](https://github.com/facebookresearch/detectron2) and it's [tutorial notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5)  to check whether there were changes.

@@ -17,7 +17,7 @@ from detectron2.utils.visualizer import ColorMode, Visualizer
 class VisualizationDemo(object):
     def __init__(self, cfg, arg_metadata=None, instance_mode=ColorMode.IMAGE, parallel=False):
         """
-        Args: #todo add
+        Args:
             cfg (CfgNode):
             arg_metadata (Metadata): Metadata in Metadata format (not json format)
             instance_mode (ColorMode):
