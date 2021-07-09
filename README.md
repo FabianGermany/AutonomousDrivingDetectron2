@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-
 1. [About](#about)
 2. [How to run](#how-to-run)
     1. [Set up the Jupyter notebook](#set-up-the-jupyter-notebook)
     2. [Prepare dataset](#prepare-the-dataset)
-    3. [Run](#run)
+    3. [Choose (Hyper-)Parameters](#before-run)
+    4. [Run](#run)
 3. [FAQ](#problems)
 
 
@@ -54,12 +54,16 @@ There you have two zip-files called `dataset_1_train.zip` and `dataset_2_train.z
 
 The software will take care of converting the dataset to Detectron2 format by itself, so dont't worry about that.
 
-<a name="run"></a>
-### Run
+<a name="before-run"></a>
+### Choose (Hyper-)Parameters
 
 Before running, make sure to choose the desired parameters. This includes the sub-datasets paths as mentioned above, but also the choice whether you want to install Detectron2 permanently on your Google Drive or not using `local_install` variable.  Also we have `dataset_json_available` . Once the script has run at least once, we can set it to `True` in order to load the stored .json file so we don't need to re-parse every time. Furthermore we have `load_existing_trained_model`. We can set this to `True` so that we can load our trained model. This is useful if we only want to evaluate something and we already ran this script before, but we don't want to re-train our pre-trained model everytime we launch Colab to save time and ressources. If you want to skip the evaluation and/or the metrics calculation part, you can use the bool values `run_evaluation` and `calculate_metrics` for that.
 
-Also make sure to choose the desired model in section2. There you can pick `model_path = "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"` for using a Faster R-CNN object detection model, for example.
+Also make sure to choose the desired model in section2. There you can pick `model_path = "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"` for using a Faster R-CNN object detection model, for example. If you want to choose a completely different one, please make sure that the configurations name still match with the given ones. For example `MODEL.ROI_HEADS.NUM_CLASSES` doesn't work for RetinaNet. It must be called `MODEL.RETINANET.NUM_CLASSES` instead. See more [here](https://detectron2.readthedocs.io/tutorials/datasets.html#update-the-config-for-new-datasets). However, I prepared this script so that it will support Faster R-CNN and RetinaNet so far. This means for other models you may make a few configuration adaptions.
+
+
+<a name="run"></a>
+### Run
 
 Starting from the top of the notebook, just click on the desired scrips. When running the steps for installating some dependencies, you may ask to re-connect to the runtime. In case of that please follow the instructions.
 
