@@ -1,1 +1,1 @@
-The file "model_final.pth" is too large for GitHub
+The file "model_final.pth" is too large for GitHub (even if compressed)

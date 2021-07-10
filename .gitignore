@@ -142,3 +142,6 @@ dmypy.json
 /output_data/scene_2/exemplary_scene_rural_2_muted_output_bounding_box_RetinaNet_trained.gif
 /output_data/scene_2/exemplary_scene_rural_2_muted_output_instance_segmentation_Mask_R_CNN_pretrained.gif
 /output_data/scene_2/exemplary_scene_rural_2_muted_output_panoptic_segmentation_Panoptic_FPN_pretrained.gif
+
+# Model files (.pth) are also to big (don't sync all model_final.pth files inside the model_and_data_backup folder)
+/model_and_data_backup/**/model_final.pth 

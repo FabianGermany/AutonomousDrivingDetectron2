@@ -75,11 +75,11 @@ Starting from the top of the notebook, just click on the desired scrips. When ru
 
 If you have some problems executing some commands, it sometimes helps if you delete the output folder and re-run the script:
 
-* If you receive `AssertionError: Results do not correspond to current coco set` at `print(inference_on_dataset(trainer.model, val_loader, evaluator))` then it's actually a bit tricky. According to [this GitHub issue](https://github.com/facebookresearch/detectron2/issues/1631) a way to fix this is to delete all the files in the output folder (the model, the data in .json format etc.). Then you need to reset the Colab runtime so that everything including the installation of Detectron2, the connection to Google Drive etc. will start from the beginning again. After this simply re-run the whole notebook. Maybe it's sufficient to delete one single file or do less steps, but I couldn't find out yet.
-
 * If the GPU is not available or the storage is not sufficient, you may change to another environment such as Amazon AWS or use your own GPU provided you have one. Another solution is to pay for Google Colab Pro what I did.
 
 * If Detectron2 doesn't work, please check whether the right CUDA and torch versions are installed. Detectron2 currently only works for Torch 1.8.0. The problem is that both the libraries versions that are installed on default on Colab and the required packages versions for Detectron2 may change in the course of the time. To make sure please have a look on the [GitHub of Detectron2](https://github.com/facebookresearch/detectron2) and it's [tutorial notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5)  to check whether there were changes.
+
+* If you receive something like `AssertionError: Results do not correspond to current coco set` at `print(inference_on_dataset(trainer.model, val_loader, evaluator))` then it's actually a bit tricky. According to [this GitHub issue](https://github.com/facebookresearch/detectron2/issues/1631) a way to fix this is to delete all the files in the output folder (the model, the data in .json format etc.). Then you need to reset the Colab runtime so that everything including the installation of Detectron2, the connection to Google Drive etc. will start from the beginning again. After this simply re-run the whole notebook. Maybe it's sufficient to delete one single file or do less steps, but I couldn't find out yet.
 
 
 <!-- 
